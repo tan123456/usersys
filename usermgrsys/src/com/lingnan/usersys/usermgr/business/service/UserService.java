@@ -14,7 +14,7 @@ public interface UserService {
 	 * @param user
 	 * @return 成功返回true，失败返回false
 	 */
-	//public boolean addUser(UserVO user);
+	public boolean addUser(UserVO user);
 	
 	/**
 	 * 用户登录

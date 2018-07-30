@@ -103,7 +103,7 @@ public class DBUtils {
 		}
 	
 	/**
-	 * 关闭声明对象
+	 * 关闭结果集和声明对象
 	 */
 	public static void closeStatement(ResultSet rs, Statement stmt) {
 		try {
@@ -117,7 +117,7 @@ public class DBUtils {
 			}
 		} catch (SQLException e) {
 			//将异常封装为自定义异常
-			throw new DaoException("关闭声明对象失败", e);
+			throw new DaoException("关闭结果集和声明对象失败", e);
 		}
 	}
 	

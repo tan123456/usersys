@@ -33,5 +33,20 @@ public class UserController {
 	 * @param user 用户信息
 	 * @return 成功返回true，失败返回false
 	 */
+	public boolean doAddUser(UserVO user) {
+		boolean flag = false;
+		try {
+			//调用用户service接口中的login方法，进行用户登录操作
+			flag = userMgrService.addUser(user);
+			
+			
+		} catch (Exception e) {
+			//显示异常信息
+			System.out.println("用户注册时出错"+e.getMessage());
+			
+		}
+		return flag;
+		
+	}
 
 }

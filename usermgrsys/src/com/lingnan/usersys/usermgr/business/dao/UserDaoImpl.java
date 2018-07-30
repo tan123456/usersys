@@ -1,10 +1,11 @@
 package com.lingnan.usersys.usermgr.business.dao;
 
+import java.io.Closeable;
 import java.sql.Connection;
-
 import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import com.lingnan.usersys.common.exception.DaoException;
 import com.lingnan.usersys.common.util.DBUtils;
@@ -92,12 +93,14 @@ public class UserDaoImpl implements UserDao {
 	 * @return 成功返回true，失败返回false
 	 */
 	public boolean addUser(UserVO user) {
+		boolean flag = false;
 		//先判断参数是否为空，如果不为空，进行数据库插入操作
 		if (user != null) {
 			//声明预编译的声明对象变量，用于进行数据库操作的载体
 			PreparedStatement pstam = null;
 			//声明变量，用于保存数据库更新结果
 			int result = -1;
+			
 			try {
 				//调用连接对象的prepareStatement方法，得到预编译对象，赋值给预编译对象
 				pstam = conn.prepareStatement("insert into t_user values (?, ?, ?, ?, ?, ?, ?, '0')");
@@ -109,14 +112,22 @@ public class UserDaoImpl implements UserDao {
 				pstam.setString(5, user.getMail());
 				pstam.setString(6, user.getPower());
 				pstam.setDate(7, (java.sql.Date) user.getBirth());
-				pstam.setString(8, user.getStatus());
 				pstam.addBatch();
+				//flag = true;
+				result = 0;
 			} catch (Exception e) {
 				// TODO: handle exception
+			} finally {
+				try {
+					if (pstam != null) 
+						pstam.close();
+					} catch (SQLException e) {
+						//将异常封装为自定义异常
+						throw new DaoException("关闭声明对象失败", e);
+					}
+				}
 			}
-			
-		}
-		return false;
+		return flag;
 		
 	}
 	

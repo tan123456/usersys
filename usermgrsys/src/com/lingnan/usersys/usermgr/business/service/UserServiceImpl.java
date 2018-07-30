@@ -66,6 +66,14 @@ public class UserServiceImpl implements UserService{
 		return user;
 	}
 	
+	/**
+	 * 注册用户/添加用户
+	 * @param user 用户信息
+	 * @retrun 成功返回true，失败返回false
+	 */
+	public boolean addUser(UserVO user) {
+		return false;
+	}
 	
 	
 
