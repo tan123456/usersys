@@ -29,6 +29,7 @@ public class IndexFrame implements BaseFrame{
 			System.out.println("用户登录--------------------1");
 			System.out.println("用户注册--------------------2");
 			System.out.println("退出程序--------------------3");
+			//声明变量，用于接受从控制台输入的数据
 			int i = -1;
 			//读取用户控制台输入，如果输入值正确，中断循环，否则提示错误信息，再重新输入
 			while (true) {
@@ -64,6 +65,7 @@ public class IndexFrame implements BaseFrame{
 			}
 		}
 	}
+	
 	public void loginShow() {
 		//声明缓冲处理对象，用于接受控制台输入的数据
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -103,18 +105,19 @@ public class IndexFrame implements BaseFrame{
 		if ("注册".equals(type)){
 			System.out.println("用户注册界面");
 			System.out.println("========================");
-		} else {
-			
+		} else if ("添加".equals(type)) {
+			System.out.println("添加用户界面");
+			System.out.println("========================");
 		}
 		
-		System.out.println("请输入您的用户名");
 		try {
 			//加载用户对象
 			UserVO user = new UserVO();
 			//以行为单位，读取输入的各个值，赋值给用户对象的各个属性
+			//user.setUserId(Integer.toString(user.getId()));
+			System.out.println("请输入您的用户名");
 			user.setName(br.readLine());
-			System.out.println("请输入您的用户编号");
-			user.setUserId(br.readLine());
+			
 			System.out.println("请输入您的密码");
 			user.setPass(br.readLine());
 			while (true) {
@@ -123,8 +126,7 @@ public class IndexFrame implements BaseFrame{
 				if (TypeUtils.checkEmail(email)) {
 					user.setMail(email);
 					break;
-				}
-				
+				}		
 			}
 			System.out.println("请输入您的出生日期(YYYY-MM-DD)");
 			user.setBirth(TypeUtils.strToDate(br.readLine()));
@@ -132,6 +134,21 @@ public class IndexFrame implements BaseFrame{
 			UserController uc = new UserController();
 			//调用用户控制器中的doRegister方法，进行用户注册操作
 			Boolean flag = uc.doAddUser(user); 
+			if (flag) {
+				if ("注册".equals(type)) {
+					System.out.println("恭喜恭喜，注册成功!");
+				}
+				else {
+					System.out.println("添加成功");
+				}
+			} else {
+				if ("注册".equals(type)) {
+					System.out.println("注册失败!");
+				}
+				else {
+					System.out.println("添加失败");
+				}
+			}
 		} catch (Exception e) {
 			//显示异常信息
 			System.out.println("注册失败! ! !"+e.getMessage());
@@ -147,10 +164,17 @@ public class IndexFrame implements BaseFrame{
 	}
 	/**
 	 * 修改
-	 * @param type
-	 * @param user
+	 * @param type 用户类型
+	 * @param user 用户信息
 	 */
 	public void updateShow(String type, UserVO user) {
+		
+	}
+	/**
+	 * 删除
+	 * @param id 用户编号
+	 */
+	public void deleteShow(int id) {
 		
 	}
 	

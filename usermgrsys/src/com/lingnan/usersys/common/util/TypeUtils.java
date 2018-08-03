@@ -35,11 +35,10 @@ public class TypeUtils {
 		//返回转换后的值
 		return date;	
 	}
-	
 	/**
 	 * 日期转换为字符串
 	 * @param date 指定的日期
-	 * @reutrn 转换后的字符串
+	 * @return 转换后的字符串
 	 */
 	public static String dateToStr(Date date) {
 		String str = null;
@@ -60,9 +59,8 @@ public class TypeUtils {
 	/**
 	 * 检查邮箱格式
 	 * @param email 指定的邮箱
-	 * 
+	 * @return 正确返回true,错误返回false
 	 */
-	
 	public static boolean checkEmail(String email) {
 		
 		try {
@@ -78,16 +76,5 @@ public class TypeUtils {
 		}		
 	}
 	
-	/**
-	 * 判断字符串是否为空
-	 * @param str 字符串
-	 */
-	public static boolean isEmpty(String str) {
-		if (str == null || str.length() == 0) {
-			return true;
-		} else {
-			return false;
-		}	
-	}
 	
 }

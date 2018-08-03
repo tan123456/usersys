@@ -9,7 +9,7 @@ public interface BaseFrame {
 	public void show();
 	/**
 	 * 增加用户页面显示
-	 * @param type
+	 * @param type 用户类型
 	 */
 	public void addShow(String type);
 	/**
@@ -18,9 +18,14 @@ public interface BaseFrame {
 	public void searchShow();
 	/**
 	 * 修改
-	 * @param type
-	 * @param user
+	 * @param type 用户类型
+	 * @param user 用户信息
 	 */
 	public void updateShow(String type, UserVO user);
+	/**
+	 * 删除
+	 * @param id 用户编号
+	 */
+	public void deleteShow(int id);
 	
 }

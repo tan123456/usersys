@@ -16,6 +16,7 @@ import com.lingnan.usersys.common.exception.DaoException;
 public class DBUtils {
 	/**
 	 * 获取数据库连接
+	 * @return 数据库连接
 	 */
 	public static Connection getConnection(){
 		Connection conn = null;
@@ -57,7 +58,7 @@ public class DBUtils {
 	/**
 	 * 提交事务
 	 * 
-	 * @param conn
+	 * @param conn 要提交事务的数据库的连接
 	 */
 	public static void commit(Connection conn) {		
 		try {
@@ -74,7 +75,7 @@ public class DBUtils {
 	/**
 	 * 回滚事务
 	 * 
-	 * @param conn
+	 * @param conn 要回滚事务的数据库的连接
 	 */
 	public static void rollback(Connection conn) {		
 		try {
@@ -90,6 +91,7 @@ public class DBUtils {
 	
 	/**
 	 * 关闭数据库的连接
+	 * @param conn 数据库的连接
 	 */
 	public static void closeConnection(Connection conn) {
 			try {
@@ -104,6 +106,8 @@ public class DBUtils {
 	
 	/**
 	 * 关闭结果集和声明对象
+	 * @param rs 结果集
+	 * @param stmt 声明对象
 	 */
 	public static void closeStatement(ResultSet rs, Statement stmt) {
 		try {

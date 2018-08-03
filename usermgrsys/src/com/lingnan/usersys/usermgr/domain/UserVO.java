@@ -22,7 +22,7 @@ public class UserVO {
 	
 	/**
 	 * 设置用户编号为指定参数的值
-	 * @param id 用户编号
+	 * @param userId 用户编号
 	 */
 	public void setUserId(String userId){
 		this.userId = userId;

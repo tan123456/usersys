@@ -16,7 +16,7 @@ public class DaoException extends RuntimeException{
 	
 	/**
 	 * 构造方法
-	 * @param arg0异常的详细信息
+	 * @param arg0 异常的详细信息
 	 */
 	public DaoException(String arg0) {
 		super(arg0);
@@ -24,8 +24,8 @@ public class DaoException extends RuntimeException{
 	
 	/**
 	 * 构造方法
-	 * @param arg0异常的详细信息
-	 * @param arg1产生异常的原因
+	 * @param arg0 异常的详细信息
+	 * @param arg1 产生异常的原因
 	 */
 	public DaoException(String arg0, Throwable arg1) {
 		super(arg0,arg1);
@@ -33,7 +33,7 @@ public class DaoException extends RuntimeException{
 	
 	/**
 	 * 构造方法
-	 * @param arg1产生异常的原因
+	 * @param arg1 产生异常的原因
 	 */
 	public DaoException(Throwable arg1) {
 		super(arg1);
